@@ -10,6 +10,7 @@ public class Validation{
 	static String strEmail;
 	static String strDob;
 	
+	// --------------- CHECKING USERNAME VALIDATION -------------------- //
 	public static boolean UserName(String val) {
 		
 		strUserName = val;
@@ -17,11 +18,13 @@ public class Validation{
             return false;
         }
 		
-		String strUserNameRegex = "^([A-Za-z]|[_A-Za-z](?:[_A-Za-z0-9-]+)){5,}$" ;
-		Pattern pattern = Pattern.compile(strUserNameRegex);
-		Matcher m = pattern.matcher(strUserName);
-		return m.matches();
+		String strUserNameRegex = "^([A-Za-z]|[_A-Za-z](?:[_A-Za-z0-9-]+)){7,}$" ;        // -> regular expression
+		Pattern pattern = Pattern.compile(strUserNameRegex);                             // -> to generate the pattern from the regular expression
+		Matcher m = pattern.matcher(strUserName);                                       // -> match the value with the pattern 
+		return m.matches();                                                            // -> returns true if matched  or false if not 
 	}
+	
+	// --------------- CHECKING PASSWORD VALIDATION -------------------- //
 	
 	public static boolean Password (String val) {
 		
@@ -36,20 +39,57 @@ public class Validation{
 				+"(?=.*[A-Z])"
 				+"(?=.*[!@#&()–[{}]:;',?/~$^+=<>])" 
 				+"."
-				+"{7,20}$";
-		Pattern pattern = Pattern.compile(strPasswordRegex);
-		Matcher m = pattern.matcher(strPassword);
-		return m.matches();
+				+"{7,20}$";                                                            // -> regular expression
+		Pattern pattern = Pattern.compile(strPasswordRegex);                          // -> to generate the pattern from the regular expression
+		Matcher m = pattern.matcher(strPassword);                                    // -> match the value with the pattern 
+		return m.matches();                                                         // -> returns true if matched  or false if not 
 		
 		
 	}
 	
+	// --------------- CHECKING EMAIL VALIDATION -------------------- //
+	
+	public static boolean Email(String val) {
+		
+		strEmail = val;
+		if (strEmail == null || strEmail.isEmpty()) {
+            return false;
+        }
+		String strEmailRegex = "^[_A-Za-z0-9-]+(?:\\.[_A-Za-z0-9-]+)*@" 
+								+ "[A-Za-z0-9-]+(?:\\.[A-Za-z0-9]+)*"
+								+ "(?:\\.[A-Za-z]{2,3})$";                           // -> regular expression
+		Pattern pattern = Pattern.compile(strEmailRegex);                           // -> to generate the pattern from the regular expression
+		Matcher m = pattern.matcher(strEmail);                                     // -> match the value with the pattern 
+		return m.matches();                                                       // -> returns true if matched  or false if not 
+		
+	}
+	
+	// --------------- CHECKING DATE_OF_BIRTH VALIDATION -------------------- //
+	
 	public static boolean Dob(String val) {
 		
 		strDob = val;
-		int iDay = Integer.parseInt(strDob.substring(0,2));
-		int iMonth = Integer.parseInt(strDob.substring(3,5));
-		int iYear = Integer.parseInt(strDob.substring(6,10));
+		int iDay;
+		int iMonth;
+		int iYear;
+		
+		               // ------ split the user entered date into day , month and year -------- //
+		try {
+			
+			iDay = Integer.parseInt(strDob.substring(0,2));
+			iMonth = Integer.parseInt(strDob.substring(3,5));
+			iYear = Integer.parseInt(strDob.substring(6,10));
+			
+		}
+		catch(Exception e) {
+			
+			System.out.println(e);
+			return false;
+			
+		}
+		
+		      // ------------ checking whether the month entered has " TOTALY 30 or 31 DAYS " and also whether the year is "LEAP YEAR" or not  -------------- //
+		
 		if(iMonth == 4 || iMonth == 6 || iMonth == 9 || iMonth == 11) {
 			if(iDay == 31) {
 				return false;
@@ -70,17 +110,5 @@ public class Validation{
 		
 	}
 	
-	public static boolean Email(String val) {
-		
-		strEmail = val;
-		if (strEmail == null || strEmail.isEmpty()) {
-            return false;
-        }
-		String strEmailRegex = "^[_A-Za-z0-9-]+(?:\\.[_A-Za-z0-9-]+)*@" + "[A-Za-z0-9-]+(?:\\.[A-Za-z0-9]+)*(?:\\.[A-Za-z]{2,3})$";
-		Pattern pattern = Pattern.compile(strEmailRegex);
-		Matcher m = pattern.matcher(strEmail);
-		return m.matches();
-		
-	}
 
 }

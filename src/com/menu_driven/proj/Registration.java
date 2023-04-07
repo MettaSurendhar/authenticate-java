@@ -5,27 +5,43 @@ public class Registration {
 	String strPassword;
 	String strDob;
 	String strUserName;
-	String strInfo[] ;
+	String strEncryptedPassword;
+
+
+	// ------------- CONSTRUCTOR ------------ //
 	
 	Registration ( String userName,String password,String email , String dob){
 		this.strEmail = email;
 		this.strPassword = password;
 		this.strDob = dob;
 		this.strUserName = userName;
+		registEncrypt();
 	}
+	
+	// ---------------- ENCRYPTING THE PASSWORD ------------------ //
+	
+	public void registEncrypt() {
+		strEncryptedPassword = Encryption.encrypt(strPassword);
+	}
+	
+	// --------------- CALLING POST METHOD ---------------------- //
 	
 	public void registPost() {
+		
+		System.out.println("\n ---------- [ ACCESSING THE DATABASE ....... ]  ---------- \n");
 
-		boolean boolResult  = DataBase.Insert(strUserName,strPassword,strEmail,strDob);
+		boolean boolResult  = DataBase.Insert(strUserName,strEncryptedPassword,strEmail,strDob,strPassword);
 		
 		if(boolResult)
-			System.out.println(" YOU HAVE REGISTERED SUCCESSFULLY !!! ");
+			System.out.println("\n YOU HAVE REGISTERED SUCCESSFULLY !!! \n");
 		else
-			System.out.println(" YOUR REGISTRATION IS FAILED :( ");
+			System.out.println("\n YOUR REGISTRATION IS FAILED :( \n");
 	}
 	
+	// --------------- CHECKING VALIDATION -------------------- //
+	
 	public String registValid() {
-		System.out.println("--- Validation ---");
+		System.out.println("\n ---------- VALIDATING THE PASSWORD ---------- \n");
 		
 		String strReturn = "true";
 		boolean boolValid = true;
