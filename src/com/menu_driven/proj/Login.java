@@ -36,9 +36,9 @@ public class Login {
 		boolResult = DataBase.SelectEncrypt(strUserName,strEncryptedPassword);         
 		
 		if(boolResult)
-			System.out.println("\n YOU HAVE LOGED IN SUCCESSFULLY !!! \n");
+			System.out.println("\n ----------------- YOU HAVE LOGED IN SUCCESSFULLY :) ----------------- \n");
 		else
-			System.out.println("\n ENTERED USERNAME OR PASSWORD IS NOT REGISTERED :( \n");
+			System.out.println("\n ----------------- ENTERED USERNAME OR PASSWORD IS NOT REGISTERED :( ----------------- \n");
 
 	}
 	
@@ -51,9 +51,9 @@ public class Login {
 		boolResult = DataBase.SelectEncrypt(strUserName);
 		
 		if(boolResult)
-			System.out.println("\n YOU HAVE LOGED IN SUCCESSFULLY !!! \n");
+			System.out.println("\n ----------------- YOU HAVE LOGED IN SUCCESSFULLY :) ----------------- \n");
 		else
-			System.out.println("\n ENTERED USERNAME OR PASSWORD IS NOT REGISTERED :( \n");
+			System.out.println("\n ----------------- ENTERED USERNAME OR PASSWORD IS NOT REGISTERED :( ----------------- \n");
 
 	}
 	
@@ -63,18 +63,18 @@ public class Login {
 	
 	public String logValid () {
 		
-		System.out.println("\n ---------- VALIDATING THE PASSWORD ---------- \n");
+		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
 		String strReturn = "true";
 		boolean boolValid = true;
 		
-		boolValid = Validation.UserName(strUserName);
-		if(boolValid == false)
-			return "USER NAME";
+		boolValid = Validation.UserName(strUserName);                          //
+		if(boolValid == false)                                                // --------------- validating the "userName" --------------- //
+			return "USER NAME";                                              //
 		
-		boolValid = Validation.Password(strPassword);
-		if(boolValid == false)
-			return "PASSWORD";
+		boolValid = Validation.Password(strPassword);                          //
+		if(boolValid == false)                                                // --------------- validating the "password" --------------- //
+			return "PASSWORD";                                               //
 		
 		return strReturn;
 	}
@@ -83,14 +83,14 @@ public class Login {
 	
 	public String logRemindValid () {
 		
-		System.out.println("\n ---------- VALIDATING THE PASSWORD ---------- \n");
+		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
-		String strReturn = "true";
+		String strReturn = "true"; 
 		boolean boolValid = true;
 		
-		boolValid = Validation.UserName(strUserName);
-		if(boolValid == false)
-			return "USER NAME";
+		boolValid = Validation.UserName(strUserName);                          //
+		if(boolValid == false)                                                // --------------- validating the "userName" --------------- //
+			return "USER NAME";                                              //
 		
 		return strReturn;
 	}

@@ -43,7 +43,7 @@ public class DataBase {
 	}
 	
 	
-	// -------------------------- ACCESSING THE DATABASE TO INSERT DATA ------------------------------- //
+	// -------------------------- ACCESSING THE DATABASE TO INSERT REGISTRATION DATA ------------------------------- //
 	
 	public static boolean Insert (String userName , String encryptedPassword , String email , String dob,String password) {
 		
@@ -93,7 +93,7 @@ public class DataBase {
 	
 	
 	
-	// ------------------------- ACCESSING THE DATABASE TO INSERT DATA ------------------------------ //
+	// ------------------------- ACCESSING THE DATABASE TO INSERT RESET DATA ------------------------------ //
 	
 	public static boolean Update (String userName , String encryptedPassword , String password) {
 			
@@ -135,7 +135,7 @@ public class DataBase {
 		
 	}
 		
-	// -------------------------- ACCESSING DATABASE TO SELECT ENCRYPTED PASSWORD  ------------------------------ //
+	// -------------------------- ACCESSING DATABASE TO SELECT ENCRYPTED PASSWORD FOR NORMAL LOGIN  ------------------------------ //
 	
 	public static boolean SelectEncrypt(String userName , String encryptedPassword) {
 		
@@ -175,6 +175,51 @@ public class DataBase {
 		}
 		return loged;
 	}
+	
+	// -------------------------- ACCESSING DATABASE TO SELECT ENCRYPTED PASSWORD FOR REMINDME LOGIN ------------------------------ //
+	
+	public static boolean SelectEncrypt(String userName ) {
+				
+			DataBase.strUserName = userName;
+			
+			boolean loged = false;
+			
+			try {
+				  // ------------ connecting to the "MySql" database------------ //
+				
+				stmt = con.prepareStatement("select userName from user_details where userName = ?");    // ------------ writing select query to select encryptedPassword ------------ //
+				
+				stmt.setString(1,strUserName);                                   // ------------ setting the required values in prepared statement ------------ // 
+				
+				rs = stmt.executeQuery();                                      // ------------ execute the query to the database ------------ //
+				
+				while(rs.next()) {
+					
+					String strGet = rs.getString(1);                               // ------------ getting the required values in prepared statement ------------ //
+		
+					if((strGet).equals((strUserName)))            // ----------- checking whether the password entered is correct or not ---------- //
+						loged = true;
+				}
+				
+			}
+			catch(SQLException e) {
+//						System.out.println("Error : " + e.getMessage());
+				loged = false;
+			}
+			finally {
+				try {
+					stmt.close();
+					
+					return loged;
+				}
+				catch(Exception e) {
+					System.out.println("Error: " + e);
+				}
+			}
+			return loged;
+		}
+	
+	
 		
 	// --------------------------- ACCESSING DATABASE TO SELECT EMAIL  ------------------------------ //
 	
@@ -215,48 +260,7 @@ public class DataBase {
 		return strToEmail;
 	}
 	
-	// -------------------------- ACCESSING DATABASE TO SELECT ENCRYPTED PASSWORD  ------------------------------ //
 	
-	public static boolean SelectEncrypt(String userName ) {
-				
-			DataBase.strUserName = userName;
-			
-			boolean loged = false;
-			
-			try {
-				  // ------------ connecting to the "MySql" database------------ //
-				
-				stmt = con.prepareStatement("select userName from user_details where userName = ?");    // ------------ writing select query to select encryptedPassword ------------ //
-				
-				stmt.setString(1,strUserName);                                   // ------------ setting the required values in prepared statement ------------ // 
-				
-				rs = stmt.executeQuery();                                      // ------------ execute the query to the database ------------ //
-				
-				while(rs.next()) {
-					
-					String strGet = rs.getString(1);                               // ------------ getting the required values in prepared statement ------------ //
-		
-					if((strGet).equals((strUserName)))            // ----------- checking whether the password entered is correct or not ---------- //
-						loged = true;
-				}
-				
-			}
-			catch(SQLException e) {
-//					System.out.println("Error : " + e.getMessage());
-				loged = false;
-			}
-			finally {
-				try {
-					stmt.close();
-					
-					return loged;
-				}
-				catch(Exception e) {
-					System.out.println("Error: " + e);
-				}
-			}
-			return loged;
-		}
 	
 
 }

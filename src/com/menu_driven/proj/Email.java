@@ -29,15 +29,15 @@ public class Email {
 		
 		
 		try {
-			Properties objProps = System.getProperties();
-			objProps.put("mail.smtp.host", strSmtpHostServer);
-			objProps.put("mail.smtp.starttls.enable", true);
-			objProps.put("mail.smtp.auth", "true"); 
-			objProps.put("mail.smtp.port", "587");
+			Properties objProps = System.getProperties();                                       //
+			objProps.put("mail.smtp.host", strSmtpHostServer);                                 //
+			objProps.put("mail.smtp.starttls.enable", true);                                  // --------------- preparing necessaries for session --------------------- //
+			objProps.put("mail.smtp.auth", "true");                                          //
+			objProps.put("mail.smtp.port", "587");                                          //
 			
-			Session objSession = Session.getInstance(objProps, new javax.mail.Authenticator() {
-				protected PasswordAuthentication getPasswordAuthentication() {
-					return new PasswordAuthentication(strFromMailId, strAppPassword);
+			Session objSession = Session.getInstance(objProps, new javax.mail.Authenticator() {            //
+				protected PasswordAuthentication getPasswordAuthentication() {                            // ------------------ preparing the session ------------------ //
+					return new PasswordAuthentication(strFromMailId, strAppPassword);                    //
 				}
 			});
 			
@@ -46,14 +46,15 @@ public class Email {
 			
 			MimeMessage msg = new MimeMessage(objSession);
 
-			msg.setFrom(new InternetAddress(strFromMailId));
-			msg.setSubject("OTP verification for JDBC authentication");
-			msg.setText("Enter this OTP to generate new password\n\n OTP = " + iOtp);
-			msg.setSentDate(new Date());
-			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(strToEmail, false));
-			System.out.println("\n\t[ MESSAGE IS READY TO SEND ....... ] \n");
-			Transport.send(msg);
-			System.out.println("\n ------------ EMAIL SENT SUCCESSFULLY :) ------------- \n");
+			msg.setFrom(new InternetAddress(strFromMailId));                                                    //
+			msg.setSubject("OTP verification for JDBC authentication");                                        // 
+			msg.setText("Enter this OTP to generate new password\n\n OTP = " + iOtp);                         // ----------- preparing necessaries for OTP  email ------------------ //
+			msg.setSentDate(new Date());                                                                     // 
+			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(strToEmail, false));          // 
+			
+			System.out.println("\n\t[ MESSAGE IS READY TO SEND ....... ] \n");                                    //
+			Transport.send(msg);                                                                                 // ----------------- sending email to the user email id -------------- //
+			System.out.println("\n ----------------- EMAIL SENT SUCCESSFULLY :) ----------------- \n");         //
 		}
 		catch(Exception e) {
 			System.out.println(e);

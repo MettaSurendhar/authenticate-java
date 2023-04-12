@@ -10,7 +10,7 @@ public class View {
 	static String strPassword ;
 	static String strNewPassword;
 	static String strDob;
-	static boolean boolRemindMe ;
+	static boolean boolRemindMe = false ;
 
 	public static void main(String[] args){
 		
@@ -21,7 +21,7 @@ public class View {
 		boolean exit = false;
 		
 		System.out.println(" -------------------------------------------------------------------- "
-				+ "\n\n SELECT AN OPTION FOR AUTHENTICATION : \n\n  -> 1. USER-REGISTRATION \n\n  -> 2. USER - LOGIN \n\n  -> 3. REMIND ME \n\n  -> 4. RESET PASSWORD \n\n  -> 5. CLOSE \n\n "
+				+ "\n\n SELECT AN OPTION FOR AUTHENTICATION : \n\n  -> 1. USER - REGISTRATION \n\n  -> 2. USER - LOGIN \n\n  -> 3. REMIND ME \n\n  -> 4. RESET PASSWORD \n\n  -> 5. CLOSE \n\n "
 				+ "-------------------------------------------------------------------- ");
 
 		
@@ -41,12 +41,14 @@ public class View {
 			
 			
 			switch (val) {
-			
+			 
 				case 1: 
 					
-					//  ----------------- REGISTRATION --------------------- //
+					//  ------------------------------- REGISTRATION -------------------------------- //
 					
-					System.out.println("\n --------------------------- REGISTRATION --------------------------- \n");
+					System.out.println("\n -----------------------------------------------\n"
+							+ "\t\t USER - REGISTRATION "
+							+ "\n -----------------------------------------------\n");
 					
 					Registration objReg ;
 					String strRegValid = "false";
@@ -78,19 +80,23 @@ public class View {
 					while(strRegValid.equals("false")&& regRepeat>0);
 					
 					if(regRepeat == 0) {
-						System.out.println("\n -> ENTERED WRONG VALUES CONTINU0USLY , TRY AGAIN TO REGISTER \n");
+						System.out.println("\n ************ | ENTERED WRONG VALUES CONTINU0USLY , TRY AGAIN TO REGISTER | ************ \n");
 						break;
 					}
 					
 					objReg.registPost();
-					System.out.println("\n (( TURN ON THE REMIND ME (OPTION 3) IF NEEDED )) \n");
+					if(boolRemindMe != true) {
+						System.out.println("\n (( TURN ON THE REMIND ME (OPTION 3) IF NEEDED )) \n");
+					}
 					break;
 					
 				case 2 :
 					
-					//  ----------------- LOGIN --------------------- //
+					//  ------------------------------- LOGIN ------------------------------- //
 					
-					System.out.println("\n ------------------------------ LOGIN ------------------------------ \n");
+					System.out.println("\n -----------------------------------------------\n"
+							+ "\t\t USER - LOGIN "
+							+ "\n -----------------------------------------------\n");
 					
 					Login objLog;
 					String strLogValid = "false";
@@ -146,21 +152,25 @@ public class View {
 						while(strLogValid.equals("false")&& logRepeat>0);
 						
 						if(logRepeat == 0) {
-							System.out.println("\n -> ENTERED WRONG VALUES CONTINU0USLY , TRY AGAIN TO REGISTER \n");
+							System.out.println("\n ************ | ENTERED WRONG VALUES CONTINU0USLY , TRY AGAIN TO REGISTER | ************ \n");
 							break;
 						}
 						
 						objLog.logGet();
-						System.out.println(" ( TURN ON THE REMIND ME OPTION(3) FOR FURTHER LOGINS IF NEEDED ) ");
+						if(boolRemindMe != true) {
+							System.out.println("\n (( TURN ON THE REMIND ME (OPTION 3) IF NEEDED )) \n");
+						}
 					}
 					
 					break;
 					
 				case 3:
 					
-					//  ----------------- REMIND ME --------------------- //
+					//  ------------------------------- REMIND ME ------------------------------- //
 					
-					System.out.println("\n ---------------------------- REMIND ME ---------------------------- \n");
+					System.out.println("\n -----------------------------------------------\n"
+							+ "\t\t REMIND ME "
+							+ "\n -----------------------------------------------\n");
 					String strRemindMe= in.nextLine();
 					System.out.println(" -> WOULD YOU WANT TO REMEMBER YOUR PASSWORD (yes or no) ? ");
 					strRemindMe= in.nextLine();
@@ -170,9 +180,11 @@ public class View {
 					
 				case 4:
 						
-					//  ----------------- RESET PASSWORD --------------------- //
+					//  ----------------------------- RESET PASSWORD ----------------------------- //
 					
-					System.out.println("\n -------------------------- RESET PASSWORD -------------------------- \n");
+					System.out.println("\n -----------------------------------------------\n"
+							+ "\t\t RESET PASSWORD "
+							+ "\n -----------------------------------------------\n");
 					
 					ResetPassword objReset;
 					String strResetLogValid = "false";
@@ -197,11 +209,11 @@ public class View {
 					while(strResetLogValid.equals("false")&& resetRepeat>0);
 					
 					if(resetRepeat == 0) {
-						System.out.println("\n -> ENTERED WRONG VALUES CONTINU0USLY , TRY AGAIN TO REGISTER \n");
+						System.out.println("\n ************ | ENTERED WRONG VALUES CONTINU0USLY , TRY AGAIN TO REGISTER | ************ \n");
 						break;
 					}
 					
-					System.out.println("\n -> AN 'OTP' WILL BE SENT TO YOUR EMAIL TO RESET PASSWORD \n");
+					System.out.println("\n -------------------- AN 'OTP' WILL BE SENT TO YOUR EMAIL TO RESET PASSWORD -------------------- \n");
 
 					int iOtp = objReset.resetOtp();
 					int iEnteredOtp = 0;
@@ -236,13 +248,14 @@ public class View {
 							 break;
 						 }
 						 else {
-							 System.out.println("\n -> PLEASE ENTER THE CORRECT OTP RECEIVED TO YOUR MAIL");
+							 
 							 chance--;
 							 if(chance>0) {
+								 System.out.println("\n ************ | PLEASE ENTER THE CORRECT OTP RECEIVED TO YOUR MAIL | ************");
 								 System.out.println("\n -> CHANCES LEFT => " + chance +"\n");
 							 }
 							 else {
-								 System.out.println("\n --------------- NO CHANCES LEFT :( => RESTART AGAIN TO RESET PASSWORD ------------------ \n");
+								 System.out.println("\n ************ | NO CHANCES LEFT :( -> RESTART AGAIN TO RESET PASSWORD | ************ \n");
 							 }
 						 }
 						
@@ -261,15 +274,15 @@ public class View {
 					
 				case 5:
 					
-					//  ----------------- EXIT THE LOOP --------------------- //
+					//  ----------------------------- EXIT THE LOOP ----------------------------- //
 					
-					System.out.println("\n --------------------- CLOSING THE MENU DRIVEN --------------------- \n");
+					System.out.println("\n\t[ CLOSING THE MENU DRIVEN ........... ] \n");
 					
 					exit = true;
 					break;
 					
 				default :
-					System.out.println("\n => ENTER A VALID OPTION BETWEEN 1 AND 4 \n");
+					System.out.println("\n ************ | ENTER A VALID OPTION BETWEEN 1 AND 4 | ************ \n");
 					break;
 				
 				}
@@ -282,11 +295,11 @@ public class View {
 		
 		}
 	
-	//  ----------- PRINT IF ENTERED VALUE IS NOT VALID IN "REGISTRATION" ------------- //
+	//  ------------------------------ PRINT IF ENTERED VALUE IS NOT VALID IN "REGISTRATION" ------------------------------ //
 	
 	public static void regNonValid(String strNonValid) {
 		
-		System.out.println(" ---------- ENTERED INVALID VALUE IN " + strNonValid + " FIELD ---------- " );
+		System.out.println(" ************ | ENTERED INVALID VALUE IN " + strNonValid + " FIELD | ************ " );
 		
 		if(strNonValid.equals("EMAIL"))
 			System.out.println("\n  -> Mail_id must have \"@\" , domain and higher domain mentioned and should not have any special characters except underscore and period ");
@@ -300,16 +313,16 @@ public class View {
 		else if(strNonValid.equals("PASSWORD"))
 			System.out.println("\n  -> Password must have an special character , number , uppercase and lowercase letters and must be >7 characters.");
 		
-		System.out.println("\n ------ CLICK - \'ENTER\' TO CONTINUE ------ ");
+		System.out.println("\n ----------------- CLICK - \'ENTER\' TO CONTINUE ----------------- ");
 
 		
 	}
 	
-	//  -----------------  PRINT IF ENTERED VALUE IS NOT VALID IN "LOGIN"  --------------- //
+	//  --------------------------------  PRINT IF ENTERED VALUE IS NOT VALID IN "LOGIN"  --------------------------------- //
 	
 	public static void logNonValid(String strNonValid) {
 			
-			System.out.println(" ---------- ENTERED INVALID VALUE IN " + strNonValid + " FIELD ---------- " );
+			System.out.println(" ************ | ENTERED INVALID VALUE IN " + strNonValid + " FIELD | ************ " );
 			
 			if(strNonValid.equals("USER NAME"))
 				System.out.println("\n  -> User_Name should not have any special characters except underscore and can have uppercase letters (case sensitive) and must be >7 characters.");
@@ -317,12 +330,12 @@ public class View {
 			else if(strNonValid.equals("PASSWORD"))
 				System.out.println("\n  -> Password must have an special character , number , uppercase and lowercase letters and must be >7 characters.");
 			
-			System.out.println("\n ------ CLICK - \'ENTER\' TO CONTINUE ------ ");
+			System.out.println("\n ----------------- CLICK - \'ENTER\' TO CONTINUE ----------------- ");
 	
 			
 		}
 	
-	// -------------------------------------
+//  ----------------------------  ACTIVATE THE REMIND ME IF USER ENTERED "YES" OTHERWISE DONT  ---------------------------- //
 	
 	public static void RemindMe(String strValue) {
 		
@@ -333,11 +346,11 @@ public class View {
 		else if(strRemindMe.equals("n") || strRemindMe.equals("no") )
 			boolRemindMe = false;
 		else {
-			System.out.println("\n -> PLEASE ENTER CORRECT VALUE \n");
+			System.out.println("\n ************ | PLEASE ENTER CORRECT VALUE | ************ \n");
 			return;
 		}
 		
-		System.out.println("\n ---------------- YOUR PASSWORD IS REMINDED , NOW YOU CAN LOGIN WITHOUT PASSWORD ------------- \n");
+		System.out.println("\n ---------------- YOUR PASSWORD IS REMINDED , NOW YOU CAN LOGIN WITHOUT PASSWORD :) ------------- \n");
 	}
 	
 }

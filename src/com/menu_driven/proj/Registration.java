@@ -33,34 +33,34 @@ public class Registration {
 		boolean boolResult  = DataBase.Insert(strUserName,strEncryptedPassword,strEmail,strDob,strPassword);
 		
 		if(boolResult)
-			System.out.println("\n YOU HAVE REGISTERED SUCCESSFULLY !!! \n");
+			System.out.println("\n ----------------- YOU HAVE REGISTERED SUCCESSFULLY :) ----------------- \n");
 		else
-			System.out.println("\n YOUR REGISTRATION IS FAILED :( \n");
+			System.out.println("\n ----------------- YOUR REGISTRATION IS FAILED :( ----------------- \n");
 	}
 	
 	// --------------- CHECKING VALIDATION -------------------- //
 	
 	public String registValid() {
-		System.out.println("\n ---------- VALIDATING THE PASSWORD ---------- \n");
+		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
 		String strReturn = "true";
 		boolean boolValid = true;
 		
-		boolValid = Validation.Email(strEmail);
-		if(boolValid == false)
-			return "EMAIL";
+		boolValid = Validation.Email(strEmail);                                 //
+		if(boolValid == false)                                                 // --------------- validating the "mail id" --------------- //
+			return "EMAIL";                                                   //
 		
-		boolValid = Validation.Dob(strDob);
-		if(boolValid == false)
-			return "DATE OF BIRTH";
+		boolValid = Validation.Dob(strDob);                                     //
+		if(boolValid == false)                                                 // --------------- validating the "date of birth" --------------- //
+			return "DATE OF BIRTH";                                           //
 		
-		boolValid = Validation.UserName(strUserName);
-		if(boolValid == false)
-			return "USER NAME";
+		boolValid = Validation.UserName(strUserName);                           //
+		if(boolValid == false)                                                 // --------------- validating the "userName" --------------- //
+			return "USER NAME";                                               //
 		
-		boolValid = Validation.Password(strPassword);
-		if(boolValid == false)
-			return "PASSWORD";
+		boolValid = Validation.Password(strPassword);                           //
+		if(boolValid == false)                                                 // --------------- validating the "password" --------------- //
+			return "PASSWORD";                                                //
 		
 		
 		return strReturn;
