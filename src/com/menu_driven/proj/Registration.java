@@ -28,7 +28,7 @@ public class Registration {
 	
 	public void registPost() {
 		
-		System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
+		// System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
 
 		boolean boolResult  = DataBase.Insert(strUserName,strEncryptedPassword,strEmail,strDob,strPassword);
 		
@@ -41,7 +41,7 @@ public class Registration {
 	// --------------- CHECKING VALIDATION -------------------- //
 	
 	public String registValid() {
-		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
+		// System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
 		String strReturn = "true";
 		boolean boolValid = true;

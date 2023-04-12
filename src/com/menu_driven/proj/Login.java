@@ -31,7 +31,7 @@ public class Login {
 	
 	public void logGet () {
 		
-		System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
+		// System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
 		
 		boolResult = DataBase.SelectEncrypt(strUserName,strEncryptedPassword);         
 		
@@ -46,7 +46,7 @@ public class Login {
 	
 	public void logRemindGet () {
 		
-		System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
+		// System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
 		
 		boolResult = DataBase.SelectEncrypt(strUserName);
 		
@@ -63,7 +63,7 @@ public class Login {
 	
 	public String logValid () {
 		
-		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
+		// System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
 		String strReturn = "true";
 		boolean boolValid = true;
@@ -83,7 +83,7 @@ public class Login {
 	
 	public String logRemindValid () {
 		
-		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
+		// System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
 		String strReturn = "true"; 
 		boolean boolValid = true;

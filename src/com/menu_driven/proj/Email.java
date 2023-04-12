@@ -41,7 +41,7 @@ public class Email {
 				}
 			});
 			
-			System.out.println("\n\t[ PREPARING MAIL TO SEND OTP ....... ] \n");
+			// System.out.println("\n\t[ PREPARING MAIL TO SEND OTP ....... ] \n");
 			
 			
 			MimeMessage msg = new MimeMessage(objSession);
@@ -52,7 +52,7 @@ public class Email {
 			msg.setSentDate(new Date());                                                                     // 
 			msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(strToEmail, false));          // 
 			
-			System.out.println("\n\t[ MESSAGE IS READY TO SEND ....... ] \n");                                    //
+			// System.out.println("\n\t[ MESSAGE IS READY TO SEND ....... ] \n");                                    //
 			Transport.send(msg);                                                                                 // ----------------- sending email to the user email id -------------- //
 			System.out.println("\n ----------------- EMAIL SENT SUCCESSFULLY :) ----------------- \n");         //
 		}

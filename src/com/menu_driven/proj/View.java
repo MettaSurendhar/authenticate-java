@@ -158,7 +158,7 @@ public class View {
 						
 						objLog.logGet();
 						if(boolRemindMe != true) {
-							System.out.println("\n (( TURN ON THE REMIND ME (OPTION 3) IF NEEDED )) \n");
+							System.out.println("\n\t (( TURN ON THE REMIND ME (OPTION 3) IF NEEDED )) \n");
 						}
 					}
 					
@@ -313,7 +313,7 @@ public class View {
 		else if(strNonValid.equals("PASSWORD"))
 			System.out.println("\n  -> Password must have an special character , number , uppercase and lowercase letters and must be >7 characters.");
 		
-		System.out.println("\n ----------------- CLICK - \'ENTER\' TO CONTINUE ----------------- ");
+		System.out.println("\n ************ | CLICK ENTER TO CONTINUE | ************ ");
 
 		
 	}
@@ -330,7 +330,7 @@ public class View {
 			else if(strNonValid.equals("PASSWORD"))
 				System.out.println("\n  -> Password must have an special character , number , uppercase and lowercase letters and must be >7 characters.");
 			
-			System.out.println("\n ----------------- CLICK - \'ENTER\' TO CONTINUE ----------------- ");
+			System.out.println("\n ************ | CLICK ENTER TO CONTINUE | ************ ");
 	
 			
 		}

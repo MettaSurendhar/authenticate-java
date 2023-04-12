@@ -38,7 +38,7 @@ public class ResetPassword {
 		
 	public String resetLogValid () {
 		
-		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
+		// System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
 		String strReturn = "true";
 		boolean boolValid = true;
@@ -60,7 +60,7 @@ public class ResetPassword {
 	
 	public String resetLogValid (String password) {
 		
-		System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
+		// System.out.println("\n\t[ VALIDATING THE PASSWORD ....... ]\n");
 		
 		String strReturn = "true";
 		boolean boolValid = true;
@@ -90,7 +90,7 @@ public class ResetPassword {
 		String strNewPassword = password;
 		strEncryptedPassword = resetEncrypt(strNewPassword);
 		
-		System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
+		// System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
 
 		boolean boolResult  = DataBase.Update(strUserName, strEncryptedPassword, strNewPassword);          // --------------- updating the password and encrypted password to the database -------------- //
 		
