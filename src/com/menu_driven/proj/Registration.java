@@ -28,7 +28,7 @@ public class Registration {
 	
 	public void registPost() {
 		
-		System.out.println("\n ---------- [ ACCESSING THE DATABASE ....... ]  ---------- \n");
+		System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
 
 		boolean boolResult  = DataBase.Insert(strUserName,strEncryptedPassword,strEmail,strDob,strPassword);
 		

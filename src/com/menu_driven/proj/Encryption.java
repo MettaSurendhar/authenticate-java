@@ -15,9 +15,9 @@ public class Encryption {
 		// --------------- [ SHA_512 -> 512bits -> 64char_plain_text ] -------------------- //
 		try {
 			
-			MessageDigest instMd=MessageDigest.getInstance("SHA-512");              // ------------ message_digest instance for hashing using SHA512  ------------ //
+			MessageDigest instanceMd=MessageDigest.getInstance("SHA-512");              // ------------ message_digest instance for hashing using SHA512  ------------ //
 			
-			byte byteMessageDigest[] = instMd.digest(password.getBytes());              // ------------  convert the password  into hash value and store it in an array of bytes ----------//
+			byte byteMessageDigest[] = instanceMd.digest(password.getBytes());              // ------------  convert the password  into hash value and store it in an array of bytes ----------//
 
 			BigInteger bigInt = new BigInteger(1,byteMessageDigest);             // ------------ store the array of bytes in bigInteger variable  ----------- //
 

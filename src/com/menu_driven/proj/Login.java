@@ -7,12 +7,16 @@ public class Login {
 	String strEncryptedPassword;
 	boolean boolResult;
 	
-	// ------------- CONSTRUCTOR ------------ //
+	// ------------- CONSTRUCTORS ------------ //
 	
 	Login(String userName,String password){
 		this.strUserName = userName;
 		this.strPassword = password;
 		loginEncrypt();
+	}
+	
+	Login(String userName){
+		this.strUserName = userName;
 	}
 	
 	// ---------------- ENCRYPTING THE PASSWORD ------------------ //
@@ -21,13 +25,15 @@ public class Login {
 		strEncryptedPassword = Encryption.encrypt(strPassword);
 	}
 	
-	// --------------- CALLING GET METHOD ---------------------- //
+	// ------------------------- CALLING GET METHOD -------------------------- //
+	
+		// -> LOGGING IN BY ENTERNG BOTH " USER NAME " AND " PASSWORD " OF THE USER
 	
 	public void logGet () {
 		
-		System.out.println("\n ---------- [ ACCESSING THE DATABASE ....... ]  ---------- \n");
+		System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
 		
-		boolResult = DataBase.Select(strUserName,strEncryptedPassword);
+		boolResult = DataBase.SelectEncrypt(strUserName,strEncryptedPassword);         
 		
 		if(boolResult)
 			System.out.println("\n YOU HAVE LOGED IN SUCCESSFULLY !!! \n");
@@ -36,7 +42,24 @@ public class Login {
 
 	}
 	
-	// --------------- CHECKING VALIDATION -------------------- //
+		// -> LOGGING IN BY ONLY ENTERING THE " USER NAME " OF THE USER
+	
+	public void logRemindGet () {
+		
+		System.out.println("\n\t[ ACCESSING THE DATABASE ....... ]\n");
+		
+		boolResult = DataBase.SelectEncrypt(strUserName);
+		
+		if(boolResult)
+			System.out.println("\n YOU HAVE LOGED IN SUCCESSFULLY !!! \n");
+		else
+			System.out.println("\n ENTERED USERNAME OR PASSWORD IS NOT REGISTERED :( \n");
+
+	}
+	
+	// ------------------------- CHECKING VALIDATION -------------------------- //
+	
+		// -> CHECKING THE  VALIDATION OF BOTH " USER NAME " AND " PASSWORD "
 	
 	public String logValid () {
 		
@@ -52,6 +75,22 @@ public class Login {
 		boolValid = Validation.Password(strPassword);
 		if(boolValid == false)
 			return "PASSWORD";
+		
+		return strReturn;
+	}
+	
+		// -> CHECKING THE  VALIDATION OF ONLY " USER NAME "
+	
+	public String logRemindValid () {
+		
+		System.out.println("\n ---------- VALIDATING THE PASSWORD ---------- \n");
+		
+		String strReturn = "true";
+		boolean boolValid = true;
+		
+		boolValid = Validation.UserName(strUserName);
+		if(boolValid == false)
+			return "USER NAME";
 		
 		return strReturn;
 	}
