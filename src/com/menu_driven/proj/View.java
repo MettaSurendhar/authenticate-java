@@ -86,7 +86,7 @@ public class View {
 					
 					objReg.registPost();
 					if(boolRemindMe != true) {
-						System.out.println("\n (( TURN ON THE REMIND ME (OPTION 3) IF NEEDED )) \n");
+						System.out.println("\n\t(( TURN ON THE REMIND ME (OPTION 3) IF NEEDED )) \n");
 					}
 					break;
 					
@@ -282,7 +282,8 @@ public class View {
 					break;
 					
 				default :
-					System.out.println("\n ************ | ENTER A VALID OPTION BETWEEN 1 AND 4 | ************ \n");
+					System.out.println("\n ************ | ENTER A VALID OPTION BETWEEN 1 AND 4 | ************ \n"
+							+ "\n -----------------------------------------------\n");
 					break;
 				
 				}

@@ -18,7 +18,7 @@ public class Validation{
             return false;
         }
 		
-		String strUserNameRegex = "^([A-Za-z]|[_A-Za-z](?:[_A-Za-z0-9-]+)){7,}$" ;        // -> regular expression
+		String strUserNameRegex = "^([A-Za-z]|[_A-Za-z0-9](?:[_A-Za-z0-9-]*)*){7,}$" ;        // -> regular expression
 		Pattern pattern = Pattern.compile(strUserNameRegex);                             // -> to generate the pattern from the regular expression
 		Matcher m = pattern.matcher(strUserName);                                       // -> match the value with the pattern 
 		return m.matches();                                                            // -> returns true if matched  or false if not 
